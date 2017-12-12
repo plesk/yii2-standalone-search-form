@@ -31,7 +31,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * <code>
  *  * [
  *  *      [
- *  *          'type' => 'widget|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
+ *  *          'type' => 'widget|textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
  *  *          'attribute' => 'attr1',
  *  *          'width' => 'normal|long|full-wide',
  *  *          'range' => false|true
@@ -52,7 +52,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * ]
  *  * </code>
  *  *
- *  * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+ *  * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
  *  * see \yii\widgets\ActiveField  <br>
  *  * see \yii\bootstrap\ActiveField
  *  *
@@ -81,7 +81,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * ]
  *  * </code>
  *  *
- *  * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+ *  * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
  *  * see \yii\widgets\ActiveField  <br>
  *  * see \yii\bootstrap\ActiveField
  *  *
@@ -291,7 +291,7 @@ class SearchForm extends Widget
      * <code>
      * [
      *      [
-     *          'type' => 'widget|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
+     *          'type' => 'widget|textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
      *          'attribute' => 'attr1',
      *          'width' => 'normal|long|full-wide',
      *          'range' => false|true
@@ -312,7 +312,7 @@ class SearchForm extends Widget
      * ]
      * </code>
      *
-     * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
      * see \yii\bootstrap\ActiveField
      *
@@ -345,7 +345,7 @@ class SearchForm extends Widget
      * ]
      * </code>
      *
-     * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
      * see \yii\bootstrap\ActiveField
      *
@@ -589,7 +589,7 @@ TEMPLATE;
      * @param array $field
      * <code>
      *      [
-     *          'type' => 'widget|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
+     *          'type' => 'widget|textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
      *          'attribute' => 'attr1',
      *          'width' => 'normal|long|full-wide',
      *          'range' => false|true
@@ -608,7 +608,7 @@ TEMPLATE;
      * ]
      * </code>
      *
-     * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
      * see \yii\bootstrap\ActiveField
      *
@@ -636,7 +636,7 @@ TEMPLATE;
      * @param array $field
      * <code>
      *      [
-     *          'type' => 'input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
+     *          'type' => 'textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
      *          'attribute' => 'attr1',
      *          'width' => 'normal|long|full-wide',
      *          'range' => false|true
@@ -681,7 +681,7 @@ TEMPLATE;
 
             $optionsIndex = in_array(
                 $field['type'],
-                ['textarea', 'checkbox', 'radio', 'fileInput', 'hiddenInput', 'passwordInput', 'fileInput', 'staticControl']
+                ['textInput', 'textarea', 'checkbox', 'radio', 'fileInput', 'hiddenInput', 'passwordInput', 'fileInput', 'staticControl']
             ) ? 0 : 1;
 
             if (!isset($field['options'][$optionsIndex])) {

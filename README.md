@@ -148,7 +148,7 @@ class SearchForm extends Widget
      * <code>
      * [
      *      [
-     *          'type' => 'widget|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
+     *          'type' => 'widget|textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
      *          'attribute' => 'attr1',
      *          'width' => 'normal|long|full-wide',
      *          'range' => false|true
@@ -169,7 +169,7 @@ class SearchForm extends Widget
      * ]
      * </code>
      *
-     * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
      * see \yii\bootstrap\ActiveField
      *
@@ -202,7 +202,7 @@ class SearchForm extends Widget
      * ]
      * </code>
      *
-     * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
      * see \yii\bootstrap\ActiveField
      *

@@ -1,0 +1,25 @@
+{
+    "name": "plesk/yii2-standalone-search-form",
+    "description": "Plesk extension for Yii2 framework to make standalone search forms.",
+    "homepage": "http://www.plesk.com",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","plesk","widget","search","filter","form"],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Dmitrii Shiriaev",
+            "email": "dshiryaev@plesk.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "yiisoft/yii2": "^2.0.5",
+        "yiisoft/yii2-bootstrap": "^2.0.6",
+        "plesk/yii2-pjax": "^1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "plesk\\standalonesearchform\\": ""
+        }
+    }
+}

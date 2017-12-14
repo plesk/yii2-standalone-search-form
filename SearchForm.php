@@ -535,6 +535,9 @@ TEMPLATE;
 
         $this->fieldOptions = array_merge(
             [
+                'options' => [
+                    'class' => 'row form-group',
+                ],
                 'horizontalCssClasses' => [
                     'label' => $this->labelHorizontalCssClasses,
                 ],
@@ -545,6 +548,9 @@ TEMPLATE;
 
         $this->fieldLongOptions = array_merge(
             [
+                'options' => [
+                    'class' => 'row form-group',
+                ],
                 'horizontalCssClasses' => [
                     'label' => $this->labelHorizontalCssClasses,
                 ],
@@ -555,6 +561,9 @@ TEMPLATE;
 
         $this->fieldFullWideOptions = array_merge(
             [
+                'options' => [
+                    'class' => 'row form-group',
+                ],
                 'horizontalCssClasses' => [
                     'label' => $this->labelHorizontalCssClasses,
                 ],
@@ -710,15 +719,7 @@ TEMPLATE;
             $field['options']
         );
 
-        return Html::tag(
-            'div',
-            Html::tag(
-                'div',
-                $activeField,
-                ['class' => 'row']
-            ),
-            ['class' => 'form-group']
-        );
+        return $activeField;
     }
 
     /**

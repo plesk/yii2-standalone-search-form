@@ -32,12 +32,10 @@ $this->registerJs(
             }
         ?>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="<?= $widget->labelHorizontalCssClasses ?>"></div>
-                <div class="<?= $widget->buttonsColumnHorizontalCssClasses ?>">
-                    <?= $widget->renderButtons(); ?>
-                </div>
+        <div class="row form-group">
+            <div class="<?= $widget->labelHorizontalCssClasses ?>"></div>
+            <div class="<?= $widget->buttonsColumnHorizontalCssClasses ?>">
+                <?= $widget->renderButtons(); ?>
             </div>
         </div>
 

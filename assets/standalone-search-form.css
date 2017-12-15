@@ -3,3 +3,13 @@
 .standalone-search-form-collapse {
     margin-bottom: 10px;
 }
+
+.standalone-search-form-collapse .panel-title a {
+    color: #337ab7;
+    font-weight: 600;
+}
+
+.standalone-search-form-collapse .panel-title a:hover,
+.standalone-search-form-collapse .panel-title a:focus {
+    color: #23527c;
+}

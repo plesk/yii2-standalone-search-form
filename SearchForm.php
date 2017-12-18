@@ -31,7 +31,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * <code>
  *  * [
  *  *      [
- *  *          'type' => 'widget|textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
+ *  *          'type' => 'textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl|widget|callable',
  *  *          'attribute' => 'attr1',
  *  *          'width' => 'normal|long|full-wide',
  *  *          'range' => false|true
@@ -44,6 +44,10 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * ]
  *  * </code>
  *  *
+ *  * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+ *  * see \yii\widgets\ActiveField  <br>
+ *  * see \yii\bootstrap\ActiveField
+ *  *
  *  * type: widget
  *  * <code>
  *  * 'options' => [
@@ -52,9 +56,12 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * ]
  *  * </code>
  *  *
- *  * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
- *  * see \yii\widgets\ActiveField  <br>
- *  * see \yii\bootstrap\ActiveField
+ *  * type: callable
+ *  * <code>
+ *  * 'options' => [
+ *  *     function(\plesk\standalonesearchform\SearchForm $searchForm, array $field) { return '...'; },
+ *  * ]
+ *  * </code>
  *  *
  *  * var array
  * public $fields = [];
@@ -63,7 +70,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * <code>
  *  * [
  *  *      [
- *  *          'type' => 'widget|submitButton|resetButton|button|...',
+ *  *          'type' => 'submitButton|resetButton|button|...|widget',
  *  *          'options' => [
  *  *              'Submit', // content
  *  *              [], // options
@@ -73,6 +80,9 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  * ]
  *  * </code>
  *  *
+ *  * type: submitButton|resetButton|button <br>
+ *  * see \yii\helpers\BaseHtml
+ *  *
  *  * type: widget
  *  * <code>
  *  * 'options' => [
@@ -80,10 +90,6 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  *     ['widgetConfig']
  *  * ]
  *  * </code>
- *  *
- *  * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
- *  * see \yii\widgets\ActiveField  <br>
- *  * see \yii\bootstrap\ActiveField
  *  *
  *  * var array
  * public $buttons = [
@@ -251,7 +257,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  * @see \yii\bootstrap\ActiveField
  *
  * @see \yii\helpers\Html
- * @see \yii\bootstrap\ActiveField
+ * @see \yii\helpers\BaseHtml
  *
  * @see ActiveForm
  * @see Pjax
@@ -291,7 +297,7 @@ class SearchForm extends Widget
      * <code>
      * [
      *      [
-     *          'type' => 'widget|textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
+     *          'type' => 'textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl|widget|callable',
      *          'attribute' => 'attr1',
      *          'width' => 'normal|long|full-wide',
      *          'range' => false|true
@@ -304,6 +310,10 @@ class SearchForm extends Widget
      * ]
      * </code>
      *
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * see \yii\widgets\ActiveField  <br>
+     * see \yii\bootstrap\ActiveField
+     *
      * type: widget
      * <code>
      * 'options' => [
@@ -312,9 +322,12 @@ class SearchForm extends Widget
      * ]
      * </code>
      *
-     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
-     * see \yii\widgets\ActiveField  <br>
-     * see \yii\bootstrap\ActiveField
+     * type: callable
+     * <code>
+     *  'options' => [
+     *      function(\plesk\standalonesearchform\SearchForm $searchForm, array $field) { return '...'; },
+     *  ]
+     * </code>
      *
      * @see \yii\widgets\ActiveField
      * @see \yii\bootstrap\ActiveField
@@ -337,6 +350,9 @@ class SearchForm extends Widget
      * ]
      * </code>
      *
+     * type: submitButton|resetButton|button <br>
+     * see \yii\helpers\BaseHtml
+     *
      * type: widget
      * <code>
      * 'options' => [
@@ -344,10 +360,6 @@ class SearchForm extends Widget
      *     ['widgetConfig']
      * ]
      * </code>
-     *
-     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
-     * see \yii\widgets\ActiveField  <br>
-     * see \yii\bootstrap\ActiveField
      *
      * @see \yii\helpers\Html
      * @see \yii\bootstrap\ActiveField
@@ -368,7 +380,12 @@ class SearchForm extends Widget
      * @var array
      * @see ActiveForm
      */
-    public $formOptions = [
+    public $formOptions = [];
+    /**
+     * @var array
+     * @see ActiveForm
+     */
+    public $formOptionsDefault = [
         'action' => [''],
         'method' => 'get',
         'options' => [
@@ -508,6 +525,11 @@ TEMPLATE;
             throw new Exception('The ID of search form must be set.');
         }
 
+        $this->formOptions = array_merge_recursive(
+            $this->formOptionsDefault,
+            $this->formOptions
+        );
+
         $this->collapseOptions = array_merge(
             $this->collapseOptionsDefault,
             $this->collapseOptions
@@ -598,6 +620,83 @@ TEMPLATE;
      * @param array $field
      * <code>
      *      [
+     *          'type' => 'textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl|widget|callable',
+     *          'attribute' => 'attr1',
+     *          'width' => 'normal|long|full-wide',
+     *          'range' => false|true
+     *          'options' => [
+     *              'widgetClassName',
+     *              ['widgetConfig']
+     *          ]
+     *      ]
+     * </code>
+     *
+     * type: widget
+     * <code>
+     * 'options' => [
+     *     'widgetClassName',
+     *     ['widgetConfig']
+     * ]
+     * </code>
+     *
+     * type: callable
+     * <code>
+     *  'options' => [
+     *      function(\plesk\standalonesearchform\SearchForm $searchForm, array $field) { return '...'; },
+     *  ]
+     * </code>
+     *
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * see \yii\widgets\ActiveField  <br>
+     * see \yii\bootstrap\ActiveField
+     *
+     * @throws Exception
+     *
+     * @return string
+     *
+     * @see \yii\widgets\ActiveField
+     * @see \yii\bootstrap\ActiveField
+     */
+    public function renderField($field)
+    {
+        if ($field['type'] == 'callable') {
+            return $this->renderCallableField($field);
+        } else {
+            return $this->renderActiveField($field);
+        }
+    }
+
+    /**
+     * @param array $field
+     * <code>
+     *      [
+     *          'type' => 'callable',
+     *          'options' => [
+     *              function(\plesk\standalonesearchform\SearchForm $searchForm, array $field) { return '...'; },
+     *          ]
+     *      ]
+     * </code>
+     *
+     * @throws Exception
+     *
+     * @return string
+     *
+     * @see \yii\widgets\ActiveField
+     * @see \yii\bootstrap\ActiveField
+     */
+    protected function renderCallableField($field)
+    {
+        return call_user_func(
+            $field['options'][0],
+            $this,
+            $field
+        );
+    }
+
+    /**
+     * @param array $field
+     * <code>
+     *      [
      *          'type' => 'widget|textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl',
      *          'attribute' => 'attr1',
      *          'width' => 'normal|long|full-wide',
@@ -628,8 +727,11 @@ TEMPLATE;
      * @see \yii\widgets\ActiveField
      * @see \yii\bootstrap\ActiveField
      */
-    public function renderField($field)
+    protected function renderActiveField($field)
     {
+        if (!isset($field['width'])) {
+            $field['width'] = 'normal';
+        }
         if (!isset($field['options'])) {
             $field['options'] = [];
         }
@@ -663,7 +765,7 @@ TEMPLATE;
      * @see \yii\widgets\ActiveField
      * @see \yii\bootstrap\ActiveField
      */
-    protected function renderSingleField($field)
+    public function renderSingleField($field)
     {
         $inputId = Html::getInputId($this->model, $field['attribute']) . '_standalone';
         switch ($field['width']) {
@@ -744,7 +846,7 @@ TEMPLATE;
      * @see \yii\widgets\ActiveField
      * @see \yii\bootstrap\ActiveField
      */
-    protected function renderRangeField($field)
+    public function renderRangeField($field)
     {
         switch ($field['width']) {
             case 'normal':

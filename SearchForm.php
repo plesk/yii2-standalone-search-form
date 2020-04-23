@@ -5,9 +5,9 @@ namespace plesk\standalonesearchform;
 
 use Yii;
 use yii\base\Widget;
-use yii\bootstrap\Collapse;
+use yii\bootstrap4\Collapse;
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\widgets\InputWidget;
 use yii\widgets\Pjax;
 use plesk\standalonesearchform\Exceptions\Exception;
@@ -46,7 +46,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *  *
  *  * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
  *  * see \yii\widgets\ActiveField  <br>
- *  * see \yii\bootstrap\ActiveField
+ *  * see \yii\bootstrap4\ActiveField
  *  *
  *  * type: widget
  *  * <code>
@@ -254,7 +254,7 @@ use plesk\standalonesearchform\Exceptions\Exception;
  *
  *
  * @see \yii\widgets\ActiveField
- * @see \yii\bootstrap\ActiveField
+ * @see \yii\bootstrap4\ActiveField
  *
  * @see \yii\helpers\Html
  * @see \yii\helpers\BaseHtml
@@ -317,7 +317,7 @@ class SearchForm extends Widget
      *
      * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
-     * see \yii\bootstrap\ActiveField
+     * see \yii\bootstrap4\ActiveField
      *
      * type: widget
      * <code>
@@ -335,7 +335,7 @@ class SearchForm extends Widget
      * </code>
      *
      * @see \yii\widgets\ActiveField
-     * @see \yii\bootstrap\ActiveField
+     * @see \yii\bootstrap4\ActiveField
      *
      * @var array
      */
@@ -367,7 +367,7 @@ class SearchForm extends Widget
      * </code>
      *
      * @see \yii\helpers\Html
-     * @see \yii\bootstrap\ActiveField
+     * @see \yii\bootstrap4\ActiveField
      *
      * @var array
      */
@@ -415,13 +415,13 @@ class SearchForm extends Widget
     /**
      * @var string
      */
-    public $labelHorizontalCssClasses = 'col-xs-12 col-sm-2 col-md-2 col-lg-2';
+    public $labelHorizontalCssClasses = 'col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2';
 
 
     /**
      * @var string
      */
-    public $fieldHorizontalCssClasses = 'col-xs-12 col-sm-3 col-md-2 col-lg-2';
+    public $fieldHorizontalCssClasses = 'col-xs-12 col-sm-12 col-md-3 col-lg-2 col-xl-2';
     /**
      * @var string
      */
@@ -442,7 +442,7 @@ TEMPLATE;
     /**
      * @var string
      */
-    public $fieldLongHorizontalCssClasses = 'col-xs-12 col-sm-4 col-md-3 col-lg-3';
+    public $fieldLongHorizontalCssClasses = 'col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3';
     /**
      * @var string
      */
@@ -463,7 +463,7 @@ TEMPLATE;
     /**
      * @var string
      */
-    public $fieldFullWideHorizontalCssClasses = 'col-xs-12 col-sm-8 col-md-6 col-lg-6';
+    public $fieldFullWideHorizontalCssClasses = 'col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-6';
     public $fieldFullWideTemplate = <<<'TEMPLATE'
         {label}
         <div class='{cssClasses}'>
@@ -481,7 +481,7 @@ TEMPLATE;
     /**
      * @var string
      */
-    public $buttonsColumnHorizontalCssClasses = 'col-xs-12 col-sm-10 col-md-10 col-lg-10';
+    public $buttonsColumnHorizontalCssClasses = 'col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10';
 
 
     /**
@@ -618,7 +618,7 @@ TEMPLATE;
                     array_filter([
                         'label' => $this->collapseCaption,
                         'content' => $content,
-                        'contentOptions' => $this->openCollapse ? ['class' => 'in'] : false,
+                        'contentOptions' => $this->openCollapse ? ['class' => 'show'] : false,
                     ]),
                 ],
                 'options' => $this->collapseOptions,
@@ -658,14 +658,14 @@ TEMPLATE;
      *
      * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
-     * see \yii\bootstrap\ActiveField
+     * see \yii\bootstrap4\ActiveField
      *
      * @throws Exception
      *
      * @return string
      *
      * @see \yii\widgets\ActiveField
-     * @see \yii\bootstrap\ActiveField
+     * @see \yii\bootstrap4\ActiveField
      */
     public function renderField($field)
     {
@@ -692,7 +692,7 @@ TEMPLATE;
      * @return string
      *
      * @see \yii\widgets\ActiveField
-     * @see \yii\bootstrap\ActiveField
+     * @see \yii\bootstrap4\ActiveField
      */
     protected function renderCallableField($field)
     {
@@ -728,14 +728,14 @@ TEMPLATE;
      *
      * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
      * see \yii\widgets\ActiveField  <br>
-     * see \yii\bootstrap\ActiveField
+     * see \yii\bootstrap4\ActiveField
      *
      * @throws Exception
      *
      * @return string
      *
      * @see \yii\widgets\ActiveField
-     * @see \yii\bootstrap\ActiveField
+     * @see \yii\bootstrap4\ActiveField
      */
     protected function renderActiveField($field)
     {
@@ -773,7 +773,7 @@ TEMPLATE;
      * @return string
      *
      * @see \yii\widgets\ActiveField
-     * @see \yii\bootstrap\ActiveField
+     * @see \yii\bootstrap4\ActiveField
      */
     public function renderSingleField($field)
     {
@@ -854,7 +854,7 @@ TEMPLATE;
      * @return string
      *
      * @see \yii\widgets\ActiveField
-     * @see \yii\bootstrap\ActiveField
+     * @see \yii\bootstrap4\ActiveField
      */
     public function renderRangeField($field)
     {
@@ -983,10 +983,10 @@ TEMPLATE;
          *
          * type: input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
          * see \yii\widgets\ActiveField  <br>
-         * see \yii\bootstrap\ActiveField
+         * see \yii\bootstrap4\ActiveField
          *
          * @see \yii\helpers\Html
-         * @see \yii\bootstrap\ActiveField
+         * @see \yii\bootstrap4\ActiveField
          */
         foreach ($this->buttons as $button) {
             if ($button['type'] !== 'widget') {

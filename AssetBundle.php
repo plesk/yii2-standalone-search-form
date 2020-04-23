@@ -14,7 +14,7 @@ class AssetBundle extends YiiAssetBundle
     ];
     public $depends = [
         'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap4\BootstrapAsset',
         'yii\widgets\PjaxAsset',
     ];
 }

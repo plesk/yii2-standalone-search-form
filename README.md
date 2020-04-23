@@ -1,7 +1,7 @@
 Plesk extension for Yii2 framework to make standalone search forms
 ============================
 
-This extension uses yiisoft/yii2-bootstrap (Bootstrap 3) extension.
+This extension uses plesk/yii2-bootstrap4 extension.
 
 Installation
 ------------
@@ -15,6 +15,10 @@ The preferred way to install this extension is through [composer](http://getcomp
         {
             "type": "vcs",
             "url":  "git@github.com:plesk/yii2-standalone-search-form.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:plesk/yii2-yii2-bootstrap4.git"
         },
         {
             "type": "vcs",

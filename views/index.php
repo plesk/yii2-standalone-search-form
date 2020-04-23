@@ -3,7 +3,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Json;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\widgets\Pjax;
 use plesk\standalonesearchform\AssetBundle;
 use plesk\standalonesearchform\SearchForm;
@@ -33,8 +33,7 @@ $this->registerJs(
         ?>
 
         <div class="row form-group">
-            <div class="<?= $widget->labelHorizontalCssClasses ?>"></div>
-            <div class="<?= $widget->buttonsColumnHorizontalCssClasses ?>">
+            <div class="col">
                 <?= $widget->renderButtons(); ?>
             </div>
         </div>

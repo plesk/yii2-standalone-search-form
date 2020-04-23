@@ -429,6 +429,7 @@ class SearchForm extends Widget
         {label}
         <div class="{cssClasses}">
             <div>{input}</div>
+            <div>{hint}</div>
             <div>{error}</div>
         </div>
 TEMPLATE;
@@ -449,6 +450,7 @@ TEMPLATE;
         {label}
         <div class="{cssClasses}">
             <div>{input}</div>
+            <div>{hint}</div>
             <div>{error}</div>
         </div>
 TEMPLATE;
@@ -466,6 +468,7 @@ TEMPLATE;
         {label}
         <div class='{cssClasses}'>
             <div>{input}</div>
+            <div>{hint}</div>
             <div>{error}</div>
         </div>
 TEMPLATE;

@@ -23,7 +23,7 @@ The preferred way to install this extension is through [composer](http://getcomp
     ]
     ```
 
-- Run `composer require "plesk/yii2-standalone-search-form:^1.0.0"`
+- Run `composer require "plesk/yii2-standalone-search-form:^2.0.0"`
 
 
 Configuration
@@ -77,7 +77,7 @@ use plesk\standalonesearchform\SearchForm;
 
 echo SearchForm::widget([
     'model' => $searchModel,
-    'collapse' => false,
+    'collapse' => true,
     'fields' => [
         [
             'type' => 'widget',

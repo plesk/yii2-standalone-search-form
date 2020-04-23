@@ -274,7 +274,7 @@ class SearchForm extends Widget
     /**
      * @var bool
      */
-    public $collapse = true;
+    public $collapse = false;
 
     /**
      * @var string

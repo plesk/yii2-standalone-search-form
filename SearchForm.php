@@ -272,6 +272,11 @@ class SearchForm extends Widget
     public $model;
 
     /**
+     * @var bool
+     */
+    public $collapse = true;
+
+    /**
      * @var string
      */
     public $collapseCaption = 'Filter';
@@ -600,20 +605,22 @@ TEMPLATE;
     public function run()
     {
         $additionalContent = ob_get_clean();
+        $content =
+            $this->render('index') .
+            Html::encode($additionalContent);
 
-        return
+        return $this->collapse ?
             Collapse::widget([
                 'items' => [
                     array_filter([
                         'label' => $this->collapseCaption,
-                        'content' =>
-                            $this->render('index') .
-                            Html::encode($additionalContent),
+                        'content' => $content,
                         'contentOptions' => $this->openCollapse ? ['class' => 'in'] : false,
                     ]),
                 ],
                 'options' => $this->collapseOptions,
-            ]);
+            ]) :
+            $content;
     }
 
     /**

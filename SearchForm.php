@@ -849,6 +849,10 @@ TEMPLATE;
     public function renderSingleField($field)
     {
         $inputId = Html::getInputId($this->model, $field['attribute']) . '_standalone';
+
+        if (!isset($field['fieldOptions'])) {
+            $field['fieldOptions'] = [];
+        }
         switch ($field['width']) {
             case 'normal':
                 $fieldOptions = $this->fieldOptions;
@@ -862,11 +866,16 @@ TEMPLATE;
             default:
                 throw new Exception("Unknown field width '{$field['width']}'.");
         }
+        $fieldOptions = array_merge(
+            $fieldOptions,
+            ['selectors' => ['input' => $inputId]],
+            $field['fieldOptions']
+        );
 
         $activeField = $this->form->field(
             $this->model,
             $field['attribute'],
-            array_merge($fieldOptions, ['selectors' => ['input' => $inputId]])
+            $fieldOptions
         );
 
         if ($field['type'] != 'widget') {

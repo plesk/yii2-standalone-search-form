@@ -6,28 +6,9 @@ This extension uses plesk/yii2-bootstrap4 extension.
 Installation
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/):
 
-- Add the following lines to your `composer.json` file:
-
-    ```js
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@github.com:plesk/yii2-standalone-search-form.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "git@github.com:plesk/yii2-yii2-bootstrap4.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "git@github.com:plesk/yii2-pjax.git"
-        }
-    ]
-    ```
-
-- Run `composer require "plesk/yii2-standalone-search-form:^2.0.0"`
+```composer require "plesk/yii2-standalone-search-form:^2.0.0"```
 
 
 Configuration

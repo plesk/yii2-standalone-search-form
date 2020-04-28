@@ -5,7 +5,7 @@ namespace plesk\standalonesearchform;
 
 use Yii;
 use yii\base\Widget;
-use yii\bootstrap4\Collapse;
+use yii\bootstrap4\Accordion;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\widgets\InputWidget;
@@ -288,13 +288,13 @@ class SearchForm extends Widget
 
     /**
      * @var array ['class' => 'standalone-search-form-collapse']
-     * @see Collapse
+     * @see Accordion
      */
     public $collapseOptions = [];
 
     /**
      * @var array ['class' => 'standalone-search-form-collapse']
-     * @see Collapse
+     * @see Accordion
      */
     public $collapseOptionsDefault = ['class' => 'standalone-search-form-collapse'];
 
@@ -613,7 +613,7 @@ TEMPLATE;
             Html::encode($additionalContent);
 
         return $this->collapse ?
-            Collapse::widget([
+            Accordion::widget([
                 'items' => [
                     array_filter([
                         'label' => $this->collapseCaption,

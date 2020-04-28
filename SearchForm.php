@@ -627,33 +627,104 @@ TEMPLATE;
     }
 
     /**
-     * @param array $field
+     * @param array $fields Default: $this->fileds
      * <code>
-     *      [
-     *          'type' => 'textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl|widget|callable',
-     *          'attribute' => 'attr1',
-     *          'width' => 'normal|long|full-wide',
-     *          'range' => false|true
-     *          'options' => [
-     *              'widgetClassName',
-     *              ['widgetConfig']
-     *          ]
-     *      ]
+     * [
+     *     [
+     *         'type' => 'textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl|widget|callable',
+     *         'attribute' => 'attr1',
+     *         'width' => 'normal|long|full-wide',
+     *         'range' => false|true
+     *         'options' => [
+     *             'widgetClassName',
+     *             ['widgetConfig']
+     *         ]
+     *     ]
+     * ]
      * </code>
      *
      * type: widget
      * <code>
-     * 'options' => [
-     *     'widgetClassName',
-     *     ['widgetConfig']
+     * [
+     *     [
+     *          ...
+     *          'options' => [
+     *              'widgetClassName',
+     *              ['widgetConfig']
+     *          ]
+     *     ]
      * ]
      * </code>
      *
      * type: callable
      * <code>
-     *  'options' => [
-     *      function(\plesk\standalonesearchform\SearchForm $searchForm, array $field) { return '...'; },
-     *  ]
+     * [
+     *     [
+     *          ...
+     *          'options' => [
+     *              function(\plesk\standalonesearchform\SearchForm $searchForm, array $field) { return '...'; },
+     *          ]
+     *     ]
+     * ]
+     * </code>
+     *
+     * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>
+     * see \yii\widgets\ActiveField  <br>
+     * see \yii\bootstrap4\ActiveField
+     *
+     * @throws Exception
+     *
+     * @return string
+     *
+     * @see \yii\widgets\ActiveField
+     * @see \yii\bootstrap4\ActiveField
+     */
+    public function renderFields($fields = null)
+    {
+        if (is_null($fields)) {
+            $fields = $this->fields;
+        }
+        $result = '';
+        foreach ($fields as $field) {
+            $result .= $this->renderField($field);
+        }
+        return $result;
+    }
+    
+    /**
+     * @param array $field
+     * <code>
+     * [
+     *     'type' => 'textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl|widget|callable',
+     *     'attribute' => 'attr1',
+     *     'width' => 'normal|long|full-wide',
+     *     'range' => false|true
+     *     'options' => [
+     *         'widgetClassName',
+     *         ['widgetConfig']
+     *     ]
+     * ]
+     * </code>
+     *
+     * type: widget
+     * <code>
+     * [
+     *      ...
+     *      'options' => [
+     *          'widgetClassName',
+     *          ['widgetConfig']
+     *      ]
+     * ]
+     * </code>
+     *
+     * type: callable
+     * <code>
+     * [
+     *      ...
+     *      'options' => [
+     *          function(\plesk\standalonesearchform\SearchForm $searchForm, array $field) { return '...'; },
+     *      ]
+     * ]
      * </code>
      *
      * type: textInput|input|textarea|checkbox|radio|checkboxList|dropDownList|listBox|radioList|fileInput|hiddenInput|passwordInput|fileInput|staticControl  <br>

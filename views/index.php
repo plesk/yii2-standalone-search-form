@@ -26,11 +26,7 @@ $this->registerJs(
 
     <?php $widget->form = ActiveForm::begin($widget->formOptions); ?>
 
-        <?php
-            foreach ($widget->fields as $field) {
-                echo $widget->renderField($field);
-            }
-        ?>
+        <?= $widget->renderFields() ?>
 
         <div class="row form-group">
             <div class="col">

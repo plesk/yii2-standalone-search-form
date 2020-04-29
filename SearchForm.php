@@ -5,9 +5,14 @@ namespace plesk\standalonesearchform;
 
 use Yii;
 use yii\base\Widget;
-use yii\bootstrap4\Accordion;
-use yii\helpers\Html;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\{
+    ActiveForm,
+    Accordion
+};
+use yii\helpers\{
+    ArrayHelper,
+    Html
+};
 use yii\widgets\InputWidget;
 use yii\widgets\Pjax;
 use plesk\standalonesearchform\Exceptions\Exception;
@@ -274,6 +279,11 @@ class SearchForm extends Widget
     /**
      * @var bool
      */
+    public $reloadFormWithPjax = true;
+
+    /**
+     * @var bool
+     */
     public $collapse = false;
 
     /**
@@ -522,21 +532,27 @@ TEMPLATE;
             $this->resultAreaPjaxOptions
         );
 
-        $this->formPjaxOptions = array_merge(
+        $this->formOptions = ArrayHelper::merge(
             [
-                'id' => 'standalone-search-form-pjax-' . $this->id,
+                'id' => 'standalone-search-form-' . $this->id,
             ],
+            $this->formOptionsDefault,
+            $this->formOptions
+        );
+
+        $this->formPjaxOptions = array_merge(
+            array_filter([
+                'id' => 'standalone-search-form-pjax-' . $this->id,
+                'formSelector' => $this->reloadFormWithPjax ?
+                    false:
+                    "#{$this->formOptions['id']}"
+            ]),
             $this->formPjaxOptionsDefault,
             $this->formPjaxOptions
         );
         if (empty($this->formPjaxOptions['id'])) {
             throw new Exception('The ID of search form must be set.');
         }
-
-        $this->formOptions = array_merge_recursive(
-            $this->formOptionsDefault,
-            $this->formOptions
-        );
 
         $this->collapseOptions = array_merge(
             $this->collapseOptionsDefault,

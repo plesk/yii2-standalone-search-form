@@ -22,8 +22,9 @@ $this->registerJs(
 );
 ?>
 
-<?php Pjax::begin($widget->formPjaxOptions); ?>
-
+<?php if ($widget->reloadFormWithPjax) {
+    Pjax::begin($widget->formPjaxOptions);
+} ?>
     <?php $widget->form = ActiveForm::begin($widget->formOptions); ?>
 
         <?= $widget->renderFields() ?>
@@ -35,4 +36,9 @@ $this->registerJs(
         </div>
 
     <?php ActiveForm::end(); ?>
-<?php Pjax::end(); ?>
+<?php
+    if (!$widget->reloadFormWithPjax) {
+        Pjax::begin($widget->formPjaxOptions);
+    }
+    Pjax::end();
+?>

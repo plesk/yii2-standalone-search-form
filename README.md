@@ -1,7 +1,8 @@
 Plesk extension for Yii2 framework to make standalone search forms
 ============================
 
-This extension uses plesk/yii2-bootstrap4 extension.
+This extension provides an ability to create a form that will be submitted and validated via PJAX. After submitting the form, the page fragment set in the form settings will be updated via PJAX. Such approach provides an ability to create ajax forms with validation without the need to implement Yii2 forms AJAX validation and Yii2 client validation. The form is adaptive.   
+This extension uses yiisoft/yii2-bootstrap4 extension.
 
 Installation
 ------------
